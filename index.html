@@ -10,8 +10,7 @@
 <meta name="description" content="Galactic Boatworks is a mobile marine electrician in Campbell River, BC. I come to your boat: downrigger wiring, batteries, solar, troubleshooting and clean rewiring. No shop visit needed.">
 
 <!-- ============ EDIT THESE ============
-  LOGO:               save your logo in the same folder as this file and name it  logo.png
-                      (see the "logo-crop" note in the CSS if you crop it tighter)
+  LOGO:               save your transparent logo in the same folder as this file and name it  logo.png
   PHONE (text/call):  search for 250-555-0123  and  +12505550123  and replace both
   EMAIL:              galactic@mailjoe.net  (already your address)
   PHOTOS:             search for  PHOTO  and replace each placeholder <div> with an <img>
@@ -78,12 +77,6 @@
   .hero { background: linear-gradient(180deg, var(--white) 0%, var(--tint) 100%); padding: 40px 0 72px; }
   .hero p.lead { font-size: 1.2rem; max-width: 640px; color: var(--muted); }
   .gold-bar { width: 72px; height: 5px; border-radius: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin: 18px 0 22px; }
-
-  /* Logo: the logo file has a lot of empty space around it, so this crops
-     the image to the artwork. If you export a tightly cropped logo, delete the
-     margin and width overrides on ".logo-crop img" and set aspect-ratio to the logo's shape. */
-  .logo-crop { width: min(380px, 100%); aspect-ratio: 2.05 / 1; overflow: hidden; margin: 0 0 8px -6px; }
-  .logo-crop img { display: block; width: 192%; max-width: none; margin-left: -46.2%; margin-top: -46.2%; }
 
   .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
   .btn { display: inline-block; padding: 14px 22px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem; }
@@ -165,10 +158,9 @@
   .hero .btn-primary:hover { background: var(--gold-light); }
   .hero .btn-ghost { border-color: rgba(255,255,255,.55); color: var(--white); }
   .hero .btn-ghost:hover { background: rgba(255,255,255,.1); }
-  /* The logo file has a white background, so it sits on a white card. If you export a
-     transparent-background logo, you can remove the card (.logo-card) and use it directly. */
-  .logo-card { display: inline-block; background: var(--white); border-radius: 14px; padding: 10px 18px; margin-bottom: 24px; }
-  .logo-card .logo-crop { margin: 0; width: min(340px, 70vw); }
+  /* Black rounded card behind the (transparent) logo. The logo scales to fit the card width. */
+  .logo-card { display: inline-block; background: #000; border-radius: 14px; padding: 14px 22px; margin-bottom: 24px; width: min(380px, 100%); }
+  .logo-card img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -186,7 +178,7 @@
   <div class="hero">
     <div class="wrap">
       <!-- LOGO: save your logo as logo.png next to this file -->
-      <div class="logo-card"><div class="logo-crop"><img src="logo.png" alt="Galactic Boatworks logo"></div></div>
+      <div class="logo-card"><img src="logo.png" alt="Galactic Boatworks logo"></div>
       <h1>Mobile marine electrician<br>in Campbell River</h1>
       <div class="gold-bar"></div>
       <p class="lead">I come to your boat. No hauling it to a shop, no waiting weeks for a slot. Clean, reliable electrical work, fairly priced.</p>
