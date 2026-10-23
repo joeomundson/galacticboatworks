@@ -167,7 +167,11 @@
   object-fit: cover;
   object-position: 45% 25%;
   border-radius: 10px;
-}
+  }
+  .photos img { cursor: zoom-in; }
+  .lb { position: fixed; inset: 0; background: rgba(20,8,36,.92); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; cursor: zoom-out; }
+  .lb.open { display: flex; }
+  .lb img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 10px 50px rgba(0,0,0,.5); }
 </style>
 </head>
 <body>
@@ -189,10 +193,10 @@
       <div class="gold-bar"></div>
       <p class="lead">I come to your boat. No hauling it to a shop, no waiting weeks for a slot. Clean, reliable electrical work, fairly priced.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="sms:+16723901010">Text me</a>
-        <a class="btn btn-ghost" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry">Email me</a>
+        <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry">Email me</a>
+        <a class="btn btn-ghost" href="sms:+16723901010">Text me</a>
       </div>
-      <p class="small">Texts and emails are the fastest way to reach me. I usually reply the same day.</p>
+      <p class="small">Emails and texts are the best way to reach me. I usually reply the same day.</p>
     </div>
     <img class="hero-logo" src="logo.png" alt="Galactic Boatworks logo">
   </div>
@@ -204,7 +208,7 @@
       <div class="eyebrow">What I fix</div>
       <h2>Common problems, sorted out</h2>
       <div class="grid">
-        <div class="card"><h3>Downrigger keeps tripping the fuse</h3><p>Usually old, corroded, undersized wire. I replace it with heavy 8AWG so it stops cutting out.</p></div>
+        <div class="card"><h3>Downrigger keeps tripping the fuse</h3><p>Often old, corroded, undersized wire. I replace it with heavy 8AWG so it stops cutting out.</p></div>
         <div class="card"><h3>Battery won't hold a charge</h3><p>Testing, diagnosis, and repair of charging systems, alternators, chargers, and battery banks.</p></div>
         <div class="card"><h3>Upgrading to lithium (LiFePO₄)</h3><p>Battery systems with proper charging and monitoring, installed safely and sized to how you use the boat.</p></div>
         <div class="card"><h3>Adding solar</h3><p>Solar installation and integration with your existing system so it actually keeps your batteries topped up.</p></div>
@@ -222,8 +226,8 @@
       <h2>Simple, and no shop visit</h2>
       <div class="steps">
         <div class="step"><h3>Message me</h3><p>Tell me what's going on. Photos help.</p></div>
-        <div class="step"><h3>I come to you</h3><p>At the marina, the launch, or on the hard. I bring the tools and parts.</p></div>
-        <div class="step"><h3>You pick how to pay</h3><p>Hourly, or a fixed quote if you'd like the total up front. Either way I'll flag anything extra I find.</p></div>
+        <div class="step"><h3>I come to you</h3><p>At the marina or in your driveway. I bring the tools and parts.</p></div>
+        <div class="step"><h3>You pick how to pay</h3><p>Hourly, or a fixed quote if you'd like the total up front.</p></div>
         <div class="step"><h3>Done tidy</h3><p>Neat, secure installs, and I leave the boat as clean as I found it.</p></div>
       </div>
     </div>
@@ -337,8 +341,8 @@
       <h2>Got an electrical problem or project?</h2>
       <p>Send me a quick message describing what's going on. Photos help.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="sms:+16723901010">Text 672-390-1010</a>
-        <a class="btn btn-ghost" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry">galactic@mailjoe.net</a>
+        <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry">galactic@mailjoe.net</a>
+        <a class="btn btn-ghost" href="sms:+16723901010">Text 672-390-1010</a>
       </div>
     </div>
   </section>
@@ -352,6 +356,24 @@
     <a href="https://www.facebook.com/profile.php?id=61591946428530">Facebook</a>
   </div>
 </footer>
-
+<script>
+(function () {
+  var lb = document.createElement('div');
+  lb.className = 'lb';
+  lb.innerHTML = '<img alt="">';
+  document.body.appendChild(lb);
+  var big = lb.querySelector('img');
+  function close() { lb.classList.remove('open'); }
+  document.querySelectorAll('.photos img').forEach(function (im) {
+    im.addEventListener('click', function () {
+      big.src = im.currentSrc || im.src;
+      big.alt = im.alt;
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
