@@ -157,6 +157,15 @@
   /* Black rounded card behind the (transparent) logo. The logo scales to fit the card width. */
   .logo-card { display: inline-block; background: #000; border-radius: 14px; padding: 14px 22px; margin-bottom: 24px; width: min(380px, 100%); }
   .logo-card img { display: block; width: 100%; height: auto; }
+  .about > img {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 35% 25%;
+  border-radius: 10px;
+}
 </style>
 </head>
 <body>
