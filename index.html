@@ -334,20 +334,7 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section>
-    <div class="wrap">
-      <div class="eyebrow">Questions</div>
-      <h2>Good to know</h2>
-      <details><summary>Do I need to bring my boat to you?</summary><p>No. I work at your boat, whether it's in the water at the marina, in your driveway, or in storage.</p></details>
-      <details><summary>What areas do you cover?</summary><p>Campbell River with no travel fee. I also travel to surrounding areas; a travel fee applies. Message me with your location and I'll let you know.</p></details>
-      <details><summary>Will you tell me the cost before starting?</summary><p>Yes. If you choose a fixed quote, you'll have the total price before I start. If you choose hourly, I'll give you a rough estimate and check with you before it goes over.</p></details>
-      <details><summary>Can you work with parts I've already bought?</summary><p>Often, yes. Let me know what you have and I'll tell you if it's a good fit for the job.</p></details>
-      <details><summary>What kinds of boats do you work on?</summary><p>Fishing boats, sailboats, powerboats, and aluminum builds. If you're not sure, just ask.</p></details>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
+    <!-- CONTACT -->
   <section class="alt contact" id="contact">
     <div class="wrap">
       <h2>Got an electrical problem or project?</h2>
@@ -360,17 +347,14 @@
         <h3>Or send me a message here</h3>
         <input type="hidden" name="access_key" value="41b54192-a831-44d2-b790-4eaafdca3513">
         <input type="hidden" name="subject" value="New message from galactic.boats">
-        <input type="hidden" name="from_name" value="Galactic Boatworks website">
+        <input type="hidden" name="from_name" value="GB contact form">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
-        <label>Your name
+        <label>Your name (required)
           <input type="text" name="name" required>
         </label>
-        <label>Email
+        <label>Email (required)
           <input type="email" name="email" required>
-        </label>
-        <label>Phone (optional, if you'd rather I text)
-          <input type="tel" name="phone">
         </label>
         <label>What's going on with your boat?
           <textarea name="message" rows="5" required></textarea>
@@ -379,6 +363,19 @@
         <button class="btn btn-primary" type="submit" data-umami-event="form-submit">Send message</button>
         <p id="form-status" role="status"></p>
       </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Questions</div>
+      <h2>Good to know</h2>
+      <details><summary>Do I need to bring my boat to you?</summary><p>No. I work at your boat, whether it's in the water at the marina, in your driveway, or in storage.</p></details>
+      <details><summary>What areas do you cover?</summary><p>Campbell River with no travel fee. I also travel to surrounding areas; a travel fee applies. Message me with your location and I'll let you know.</p></details>
+      <details><summary>Will you tell me the cost before starting?</summary><p>Yes. If you choose a fixed quote, you'll have the total price before I start. If you choose hourly, I'll give you a rough estimate and check with you before it goes over.</p></details>
+      <details><summary>Can you work with parts I've already bought?</summary><p>Often, yes. Let me know what you have and I'll tell you if it's a good fit for the job.</p></details>
+      <details><summary>What kinds of boats do you work on?</summary><p>Fishing boats, sailboats, powerboats, and aluminum builds. If you're not sure, just ask.</p></details>
     </div>
   </section>
 
@@ -418,7 +415,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   try {
     var r = await fetch(f.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) });
     var j = await r.json();
-    if (j.success) { s.textContent = "Thanks! I'll get back to you soon, usually the same day."; f.reset(); }
+    if (j.success) { s.textContent = "Thanks! I'll get back to you soon."; f.reset(); }
     else { s.textContent = 'Something went wrong. Please email galactic@mailjoe.net instead.'; }
   } catch (err) {
     s.textContent = 'Something went wrong. Please email galactic@mailjoe.net instead.';
