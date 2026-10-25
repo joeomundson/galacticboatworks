@@ -134,14 +134,14 @@
   .about { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
   @media (min-width: 760px) { .about { grid-template-columns: 280px 1fr; } }
 
-  /* FAQ */
-  details { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
-  summary { cursor: pointer; font-weight: 600; color: var(--ink); }
-  details p { margin: 10px 0 0; color: var(--muted); }
-
   /* Contact */
+  contact { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
   .contact { text-align: center; }
   .contact .btn-row { justify-content: center; }
+
+  /* FAQ */
+  summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+  details p { margin: 10px 0 0; color: var(--muted); }
 
   footer { background: var(--ink); color: #cdbde6; padding: 28px 0; font-size: .92rem; text-align: center; border-top: 4px solid var(--gold); }
   footer a { color: var(--gold-light); }
