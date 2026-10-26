@@ -67,6 +67,12 @@
   p { margin: 0 0 1em; }
   a { color: var(--purple-dark); }
 
+  /* Hidden banner */
+  #inapp-banner { background: var(--gold-light); color: var(--ink); padding: 12px 20px; text-align: center; font-size: .95rem; }
+  .plain-contact { margin-top: 24px; color: var(--muted); }
+  .copy-btn { margin: 8px 6px 0; padding: 8px 14px; border: 1px solid var(--purple); border-radius: 8px; background: var(--white); color: var(--purple-dark); font: inherit; font-weight: 600; cursor: pointer; }
+  .copy-btn:hover { background: rgba(122,34,224,.07); }
+
   /* Top bar */
   .topbar { background: var(--white); border-bottom: 3px solid var(--gold); }
   .topbar .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; gap: 12px; flex-wrap: wrap; }
@@ -196,7 +202,9 @@
 </header>
 
 <main>
-
+<div id="inapp-banner" hidden>
+  Viewing this inside Facebook? Tap the <strong>•••</strong> menu and choose <strong>Open in browser</strong> so the email and text buttons work. Or use the message form at the bottom of the page.
+</div>
   <!-- HERO -->
 <div class="hero">
   <div class="wrap hero-grid">
@@ -208,6 +216,11 @@
         <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry" data-umami-event="email-hero">Email me</a>
         <a class="btn btn-ghost" href="sms:+16723901010" data-umami-event="text-hero">Text me</a>
       </div>
+      <p class="plain-contact">
+        Buttons not opening? Email <strong>galactic@mailjoe.net</strong> or text <strong>672-390-1010</strong>.<br>
+        <button type="button" class="copy-btn" data-copy="galactic@mailjoe.net" data-umami-event="copy-email">Copy email</button>
+        <button type="button" class="copy-btn" data-copy="672-390-1010" data-umami-event="copy-number">Copy number</button>
+      </p>
       <p class="small">Emails and texts are the best way to reach me. I usually reply the same day.</p>
     </div>
     <img class="hero-logo" src="logo.png" alt="Galactic Boatworks logo">
@@ -423,5 +436,28 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   b.disabled = false;
 });
 </script>  
+
+<script>
+(function () {
+  // Show the notice only inside Facebook / Instagram's in-app browser
+  if (/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)) {
+    var b = document.getElementById('inapp-banner');
+    if (b) b.hidden = false;
+  }
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var done = function () { var old = btn.textContent; btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = old; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { window.prompt('Copy this:', text); });
+      } else {
+        window.prompt('Copy this:', text);
+      }
+    });
+  });
+})();
+</script>
+  
 </body>
 </html>
