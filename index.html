@@ -191,6 +191,7 @@
   .contact-form button { cursor: pointer; border: 0; }
   #form-status { margin: 14px 0 0; color: var(--muted); }
   [hidden] { display: none !important; }
+   .fb-note { margin-top: 20px; font-size: .95rem; color: var(--muted); }
   
 </style>
 </head>
@@ -355,10 +356,9 @@
       <div class="btn-row">
         <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry" data-umami-event="email-contact">Send email</a>
         <a class="btn btn-ghost" href="sms:+16723901010" data-umami-event="text-contact">Send text</a>
-        <a class="btn btn-ghost inapp-only" href="https://m.me/61591946428530" data-umami-event="messenger" hidden>Message me on Facebook</a>
       </div>
+      <p class="fb-note inapp-only" hidden>If you're here from Facebook, the above buttons won't work. <a href="https://m.me/61591946428530" data-umami-event="messenger-note">Send me a Facebook message</a> instead.</p>
       <p class="plain-contact">
-        Buttons not opening? Email <strong>galactic@mailjoe.net</strong> or text <strong>672-390-1010</strong>.<br>
         <button type="button" class="copy-btn" data-copy="galactic@mailjoe.net" data-umami-event="copy-email">Copy email</button>
         <button type="button" class="copy-btn" data-copy="672-390-1010" data-umami-event="copy-number">Copy number</button>
       </p>
@@ -446,11 +446,11 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 <script>
 (function () {
     // Show the notice and the Messenger buttons only inside Facebook / Instagram's in-app browser
-  if (/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)) {
-    var b = document.getElementById('inapp-banner');
-    if (b) b.hidden = false;
-    document.querySelectorAll('.inapp-only').forEach(function (el) { el.hidden = false; });
-  }
+     if (/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)) {
+     var b = document.getElementById('inapp-banner');
+     if (b) b.hidden = false;
+     document.querySelectorAll('.inapp-only').forEach(function (el) { el.hidden = false; });
+   }
   // Copy buttons
   document.querySelectorAll('.copy-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
