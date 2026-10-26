@@ -190,6 +190,8 @@
   .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--purple); outline-offset: 1px; }
   .contact-form button { cursor: pointer; border: 0; }
   #form-status { margin: 14px 0 0; color: var(--muted); }
+  [hidden] { display: none !important; }
+  
 </style>
 </head>
 <body>
@@ -217,6 +219,7 @@
       <div class="btn-row">
         <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry" data-umami-event="email-hero">Email me</a>
         <a class="btn btn-ghost" href="sms:+16723901010" data-umami-event="text-hero">Text me</a>
+        <a class="btn btn-ghost inapp-only" href="https://m.me/61591946428530" data-umami-event="messenger" hidden>Message me on Facebook</a>
       </div>
       <p class="small">Emails and texts are the best way to reach me. I usually reply the same day.</p>
     </div>
@@ -352,6 +355,7 @@
       <div class="btn-row">
         <a class="btn btn-primary" href="mailto:galactic@mailjoe.net?subject=Marine%20electrical%20inquiry" data-umami-event="email-contact">Send email</a>
         <a class="btn btn-ghost" href="sms:+16723901010" data-umami-event="text-contact">Send text</a>
+        <a class="btn btn-ghost inapp-only" href="https://m.me/61591946428530" data-umami-event="messenger" hidden>Message me on Facebook</a>
       </div>
       <p class="plain-contact">
         Buttons not opening? Email <strong>galactic@mailjoe.net</strong> or text <strong>672-390-1010</strong>.<br>
@@ -441,10 +445,11 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 <script>
 (function () {
-  // Show the notice only inside Facebook / Instagram's in-app browser
+    // Show the notice and the Messenger buttons only inside Facebook / Instagram's in-app browser
   if (/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)) {
     var b = document.getElementById('inapp-banner');
     if (b) b.hidden = false;
+    document.querySelectorAll('.inapp-only').forEach(function (el) { el.hidden = false; });
   }
   // Copy buttons
   document.querySelectorAll('.copy-btn').forEach(function (btn) {
